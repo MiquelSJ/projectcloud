@@ -15,6 +15,7 @@
 ==============================================================================
 -Te un index on mostra una serie de restaurants.
 -També te un link on mostra dades a partir de Ajax i RestApi
+
 ==============================================================================
 ## Pàgina Web principal a: http://localhost:8080
 ![img](https://imgur.com/EXkgeOw.jpg)
