@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ajax</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css" >
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="http://elowcarbfoodlist.org/wp-content/uploads/2013/01/bacon-256.jpg"/>
+</head>
+<body>
+<h1 id="myTitle">Ajax!</h1>
+        <div class="nom "></div>
+        <div class="web "></div>
+        <div class="carrer "></div>
+        <div class="telefon "></div>
+        <div class="tipus "></div>
+        <div class="codi "></div>
+        <div class="img "></div>
+<script
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        console.log($("#myTitle").html());
+        $.get("/rest/api/v1/restaurants", function (data) {
+            console.log(data);
+            var contentHtml = "<h2>Restaurants</h2>";
+            var contentHtml2 = "<h2>Website</h2>"
+            var contentHtml3 = "<h2>Adreça</h2>"
+            var contentHtml4 = "<h2>Telefon</h2>"
+            var contentHtml5 = "<h2>Tipus</h2>"
+            var contentHtml6 = "<h2>Codi</h2>"
+            var contentHtml7 = "<h2>Imatge</h2>"
+            $.each(data, function( index, value ) {
+                var cell= "<div>Name:"+value.name+"</div>";
+                var cell2 = "<div>Web: "+value.website+"</div>"
+                var cell3 = "<div>Adreça: "+value.address+"</div>"
+                var cell4 = "<div>Telefon: "+value.numero+"</div>"
+                var cell5 = "<div>Tipus: "+value.type+"</div>"
+                var cell6 = "<div>Codi: "+value.code+"</div>"
+                var cell7 = "<div>Imatge: "+value.images+"</div>"
+
+                contentHtml += cell;
+                contentHtml2 += cell2;
+                contentHtml3 += cell3;
+                contentHtml4 += cell4;
+                contentHtml5 += cell5;
+                contentHtml6 += cell6;
+                contentHtml7 += cell7;
+
+            });
+            $(".nom").html(contentHtml);
+            $(".web").html(contentHtml2);
+            $(".carrer").html(contentHtml3);
+            $(".telefon").html(contentHtml4);
+            $(".tipus").html(contentHtml5);
+            $(".codi").html(contentHtml6);
+            $(".img").html(contentHtml7);
+            console.log("Load was performed.");
+        });
+    });
+</script>
+</body>
+</html>
